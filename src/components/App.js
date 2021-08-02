@@ -7,6 +7,8 @@ import "../css/reset.css"
 import Home from './Home'
 import Disciplines from './Disciplines'
 import DisciplinesById from './DisciplinesById'
+import Professors from './Professors'
+import ProfessorById from './ProfessorById'
 
 function App() {
  
@@ -26,6 +28,15 @@ function App() {
 
         <Route path='/disciplines/:id' exact>
           <DisciplinesById/>
+        </Route>
+
+
+        <Route path='/professors' exact>
+          <Professors/>
+        </Route>
+
+        <Route path='/professors/:id' exact>
+          <ProfessorById/>
         </Route>
      
       </Switch>

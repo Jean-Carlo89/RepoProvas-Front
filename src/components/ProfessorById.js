@@ -19,7 +19,7 @@ export default function DisciplinesById(){
     const [categoryArray,setCategoryArray] =useState([]) 
 
     useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}/disciplines/${id}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/professors/${id}`)
         .then((response)=>{
             console.log(response.data)
             setDisciplineData(response.data)
@@ -42,6 +42,7 @@ export default function DisciplinesById(){
            setLoad(false)
         })
     },[id])
+   
 
     return(
         <Container>
@@ -67,29 +68,31 @@ export default function DisciplinesById(){
             </ChooseExams>
 
             <DisciplinesContainer>
-              <h1 onClick={()=>console.log(categoryArray)}>{disciplineData?.name}</h1>
+               <h1 onClick={()=>console.log(categoryArray)}>{disciplineData?.name}</h1>
 
-                {categoryArray?.map((item)=>{
+             
+               
+                {disciplineData?.exams.length>0 ? categoryArray?.map((item)=>{
                     return(
                         <>
                          <h2>{item}</h2>
                         
-                        {disciplineData?.exams.map((i)=>{
+                         {disciplineData?.exams.map((i)=>{
                            
                             if(i.category.name===item){
                                 return(
                             <Exams key ={i.id}>
-                                <h3 onClick={()=>window.open(i.urlLink)}>{i.year} - {i.period.name} &nbsp; &nbsp;  {i.professor.name}  </h3>
+                                <h3 onClick={()=>window.open(i.urlLink)}>{i.year} -{i.discipline.name} - {i.period.name} </h3>
                                     
                                         
                             </Exams>
                             )
                             }
                           
-                        })}
+                        })} 
                     </>
                     )
-                })}
+                }): <h1>Não há info</h1>} 
                
 
             </DisciplinesContainer>

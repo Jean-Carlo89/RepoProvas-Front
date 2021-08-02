@@ -19,9 +19,13 @@ export default function Home(){
                     </button>
                    
                     
-                    {/* <Link> */}
-                        <button onClick={()=>console.log('fui clicado')}>professores</button>
-                    {/* </Link> */}
+                
+                    <button onClick={()=>console.log('fui clicado')}>
+                        <Link to="/professors"> 
+                            professores
+                        </Link> 
+                    </button>
+                     
                     
                 </ButtonHolder>
             </ChooseExams>

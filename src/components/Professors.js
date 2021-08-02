@@ -10,12 +10,12 @@ import axios from 'axios'
 import {useEffect,useState} from 'react'
 
 
-export default function Disciplines(){
+export default function Professors(){
     const [periods,setPeriods] = useState([])
     
 
     useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}/periods`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/professors`)
         .then((response)=>{
             console.log('aqui')
             console.log(response.data)
@@ -43,6 +43,7 @@ export default function Disciplines(){
                          </Link>
                     </button>
                    
+                    
                     <button onClick={()=>console.log('fui clicado')}>
                         <Link to="/professors"> 
                             professores
@@ -56,14 +57,10 @@ export default function Disciplines(){
                {periods?.map((item,index,arr)=>{
                    return(
                        <DisciplinesByPeriod key={item.id}>
-                           <h1>{item.name}</h1>
-                           {item.disciplines.map((item)=>{
-                               return(
-                                <Link to={`/disciplines/${item.id}`} key={item.id}>
-                                   <p>{item.name} </p>
-                                </Link>
-                               )
-                           })}
+                          <Link to={`professors/${item.id}`}>
+                            <h1>{item.name}</h1>
+                           </Link>
+                          
                            
 
                        </DisciplinesByPeriod>
@@ -81,7 +78,8 @@ export default function Disciplines(){
 const DisciplinesContainer = styled.ul`
 
 width: 400px;
-min-height:300px;
+//min-height:300px;
+height: auto;
 height: auto;
 border: 1px solid red;
 
@@ -89,7 +87,8 @@ border: 1px solid red;
 
 const DisciplinesByPeriod = styled.li`
     width: 100%;
-    min-height:100px ;
+   // min-height:100px ;
+    height: auto;
     display: flex;
     flex-direction:column;
     justify-content: center;
