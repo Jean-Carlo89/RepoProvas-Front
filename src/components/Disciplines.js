@@ -15,7 +15,7 @@ export default function Disciplines(){
     
 
     useEffect(()=>{
-        axios.get(`http://localhost:4000/periods`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/periods`)
         .then((response)=>{
             console.log('aqui')
             console.log(response.data)
@@ -58,7 +58,7 @@ export default function Disciplines(){
                            <h1>{item.name}</h1>
                            {item.disciplines.map((item)=>{
                                return(
-                                <Link to="/" key={item.id}>
+                                <Link to={`/disciplines/${item.id}`} key={item.id}>
                                    <p>{item.name} </p>
                                 </Link>
                                )

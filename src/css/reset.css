@@ -58,3 +58,11 @@ table {
 a{
 	border-style: none;
 }
+
+a:visited{
+	color:black
+}
+
+a:link{
+	color: black;
+}
